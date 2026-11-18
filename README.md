@@ -31,3 +31,7 @@ python -m eval.evaluator_excel data/test.jsonl --output test_results.xlsx --work
 ```bash
 python -m eval.evaluator_langsmith financial-rag-test --dataset-path data/test.jsonl --workers 1 --output test_results.xlsx
 ```
+
+
+
+Ссылка на эксперимент: https://eu.smith.langchain.com/public/a3008c43-4e6d-4e84-bca2-4b7e416f4025/d
