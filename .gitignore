@@ -8,3 +8,7 @@ __pycache__/
 outputs/
 index/
 /data/reports/
+.local/
+.pytest_cache/
+/test_results.jsonl
+/test_results.summary.json
