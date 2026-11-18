@@ -1,0 +1,41 @@
+{
+  "status": "complete",
+  "split": "test",
+  "questions": 141,
+  "utc_finished": "2026-11-18T13:52:42.730547+00:00",
+  "means": {
+    "context_recall": 0.8515366430260047,
+    "context_precision": 0.2810790273556231,
+    "answer_correctness": 0.8297872340425532,
+    "time": 7.121811651770671
+  },
+  "dataset_sha256": "1866b760ff966547d1f2f8a6b08010e753e6cfe66f4a6dce33b797a6d6326766",
+  "judge_sha256": "75f5056239bae0e446a70f811923d2b19604fc800cac7e3d91c585b07818387f",
+  "corpus_sha256": "5a841b96aa95e43716cf75dd612d0c1347b3eaa32cd61364134e8a4f0c10e51e",
+  "rag_model": "deepseek-flash",
+  "top_k": 4,
+  "agentic": true,
+  "python": "3.10.11",
+  "code_sha256": "219f10691953c32897a9412366eb1af847e1a3fdede0f8e27fe6872d12dcbc75",
+  "context_chars": 10000,
+  "index_file_sha256": "d32f1f33c54151b4c0316097b5565754a8e542bffad86480964a42a65207f55a",
+  "source": "live_gateway",
+  "packages": {
+    "PyMuPDF": "1.27.2.2",
+    "numpy": "1.26.4",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.7.2",
+    "openpyxl": "3.1.5",
+    "requests": "2.32.5"
+  },
+  "time_definition": "search + agent decisions + generation; excludes index load and judge",
+  "quality_experiment_source": "f9e5598",
+  "langsmith_public_dataset": "https://smith.langchain.com/public/94c16c9e-8fb2-4b67-9556-e43128aa1d5d/d",
+  "langsmith_experiment": "rag-e4161ac2",
+  "langsmith_means": {
+    "context_recall": 0.8426713947990544,
+    "context_precision": 0.2766379601485984,
+    "answer_correctness": 0.8085106382978723,
+    "time": 7.268188763830104
+  }
+}

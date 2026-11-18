@@ -1,0 +1,2 @@
+-r requirements.txt
+langsmith>=0.4,<1
