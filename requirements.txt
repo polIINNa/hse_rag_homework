@@ -1,0 +1,12 @@
+numpy>=1.26
+scipy>=1.11
+scikit-learn>=1.4
+requests>=2.31
+openpyxl>=3.1
+python-dotenv>=1.0
+langchain-openai==1.7.4
+langchain-anthropic>=1.0
+langgraph==1.2.20
+langsmith==0.14.17
+pypdfium2>=4.30
+pytesseract>=0.3.10
