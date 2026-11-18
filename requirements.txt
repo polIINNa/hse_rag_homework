@@ -1,0 +1,8 @@
+numpy>=1.26,<3
+openpyxl>=3.1,<4
+PyMuPDF>=1.26,<2.2
+rank-bm25==0.2.2
+requests>=2.32,<3
+snowballstemmer>=3,<4
+torch>=2.6,<3
+transformers>=5,<6

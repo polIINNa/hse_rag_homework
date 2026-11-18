@@ -1,11 +1,13 @@
 """Из корня репозитория: python -m eval.evaluator_langsmith ИМЯ_ДАТАСЕТА"""
 
 import argparse
+import os
 from time import perf_counter
 
-from langsmith import Client
+from langsmith import Client, tracing_context
 
-from eval.eval_functions import score_answer, score_context
+from eval.eval_functions import score_context
+from eval.judge import score_answer
 from eval.rag_example import RAG
 
 
@@ -21,15 +23,20 @@ def metrics(outputs, reference_outputs):
 
 
 def evaluate(dataset_name):
-    system = RAG()
+    if not os.environ.get("LLM_API_KEY") or not os.environ.get("LANGSMITH_API_KEY"):
+        raise RuntimeError("Set LLM_API_KEY and LANGSMITH_API_KEY before running a LangSmith experiment.")
+    client = Client()
+    system = RAG(trace=True)
 
     def answer_question(inputs):
-        start = perf_counter()
-        result = system.rag(inputs["question"])
-        return {**result, "time": perf_counter() - start}
+        with tracing_context(enabled=True, client=client):
+            start = perf_counter()
+            result = system.rag(inputs["question"])
+            return {**result, "time": perf_counter() - start}
 
-    return Client().evaluate(
-        answer_question, data=dataset_name, evaluators=[metrics], experiment_prefix="rag",
+    return client.evaluate(
+        answer_question, data=dataset_name, evaluators=[metrics], experiment_prefix=f"financial-rag-{system.mode}",
+        max_concurrency=0,
     )
 
 
