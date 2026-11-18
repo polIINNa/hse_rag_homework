@@ -9,7 +9,7 @@ from time import perf_counter
 from openpyxl import Workbook, load_workbook
 
 from eval.eval_functions import score_answer, score_context
-from eval.rag_example import RAG
+from eval.rag import RAG
 
 
 def read_items(dataset_path):

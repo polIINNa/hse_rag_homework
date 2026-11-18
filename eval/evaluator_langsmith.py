@@ -6,7 +6,7 @@ from time import perf_counter
 from langsmith import Client
 
 from eval.eval_functions import score_answer, score_context
-from eval.rag_example import RAG
+from eval.rag import RAG
 
 
 def metrics(outputs, reference_outputs):

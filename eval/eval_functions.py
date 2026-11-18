@@ -2,6 +2,7 @@
 
 import json
 import os
+import time
 
 
 def _document_pages(context):
@@ -46,24 +47,29 @@ def score_answer(gold_answer, answer):
     """Получить answer_correctness и объяснение LLM-судьи для пары ответов."""
     import requests
 
-    response = requests.post(
-        "https://claude.gigaparsers.ru/v1/messages",
-        headers={
-            "x-api-key": os.environ["LLM_API_KEY"],
-            "anthropic-version": "2023-06-01",
-        },
-        json={
-            "model": "deepseek-flash",
-            "max_tokens": 512,
-            "temperature": 0,
-            "thinking": {"type": "disabled"},
-            "system": JUDGE_PROMPT,
-            "messages": [
-                {"role": "user", "content": f"gold_answer: {gold_answer}\nanswer: {answer}"},
-            ],
-        },
-        timeout=90,
-    )
+    for _ in range(5):
+        response = requests.post(
+            "https://claude.gigaparsers.ru/v1/messages",
+            headers={
+                "x-api-key": os.environ["LLM_API_KEY"],
+                "anthropic-version": "2023-06-01",
+            },
+            json={
+                "model": "deepseek-flash",
+                "max_tokens": 512,
+                "temperature": 0,
+                "thinking": {"type": "disabled"},
+                "system": JUDGE_PROMPT,
+                "messages": [
+                    {"role": "user", "content": f"gold_answer: {gold_answer}\nanswer: {answer}"},
+                ],
+            },
+            timeout=90,
+        )
+        if response.status_code == 429:
+            time.sleep(60)
+        else:
+            break
     response.raise_for_status()
     text = "".join(
         block["text"] for block in response.json()["content"] if block["type"] == "text"
