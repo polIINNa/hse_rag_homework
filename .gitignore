@@ -3,8 +3,13 @@
 !.env.example
 .venv/
 __pycache__/
+*.pyc
 .ipynb_checkpoints/
 .DS_Store
+.idea/
 outputs/
 index/
 /data/reports/
+/eval/cache/
+*.progress.jsonl
+test_results_v1*
