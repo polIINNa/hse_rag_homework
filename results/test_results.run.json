@@ -1,0 +1,41 @@
+{
+  "fingerprint": {
+    "dataset_sha256": "15516dd487ae5981a8c1866be32697460bc1ac7dd9924e9a37775c8ff78e845a",
+    "code_sha256": "22ab40c894c42f5fa96195ab56d9b15435593e973936f25745db23075e7adf15",
+    "model": "deepseek-flash",
+    "agentic": "true",
+    "api_interval": "6.2",
+    "index_manifest": {
+      "pages_sha256": "99e26633c01b0ce2b342d9f2608e8724b35e313822ebc1d26232c5b6f4c638fd",
+      "chunks": 14415,
+      "dimension": 384,
+      "backend": "local",
+      "model": "Xenova/multilingual-e5-small",
+      "revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+      "chunk_chars": 1500,
+      "overlap_chars": 250,
+      "seconds": 2.1775821000001088
+    }
+  },
+  "dataset": "test.jsonl",
+  "started_utc": "2026-11-18T16:08:29.811494+00:00",
+  "expected_questions": 141,
+  "complete": true,
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "logical_cpus": 20
+  },
+  "averages": {
+    "context_recall": 0.7583924349881797,
+    "context_precision": 0.6412529550827423,
+    "answer_correctness": 0.8652482269503546,
+    "time": 13.404316039007107
+  },
+  "completed_questions": 141,
+  "generator_usage": {
+    "input_tokens": 1025986,
+    "output_tokens": 44858,
+    "calls": 297
+  }
+}
