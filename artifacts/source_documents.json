@@ -1,0 +1,332 @@
+[
+  {
+    "doc_id": "alfa_2022_annual",
+    "path": "alfa/2022/annual.pdf",
+    "pages": 125,
+    "sha256": "c71fe8467114ce7bf53c2a193056355db9b21307f4dcb5ad6b05bf2c2c5328a7"
+  },
+  {
+    "doc_id": "alfa_2023_annual",
+    "path": "alfa/2023/annual.pdf",
+    "pages": 130,
+    "sha256": "a96002aaa012a0f2f62572ec7a9fadda55f7fe59f9eb36dc68ab9e08d16a37da"
+  },
+  {
+    "doc_id": "alfa_2024_annual",
+    "path": "alfa/2024/annual.pdf",
+    "pages": 130,
+    "sha256": "24d3462aa2a73d6edb7aee2b803d3c6bf61059789d1b000c6f120bb38b401b30"
+  },
+  {
+    "doc_id": "alfa_2025_annual",
+    "path": "alfa/2025/annual.pdf",
+    "pages": 126,
+    "sha256": "b2ec2b29d9ce802760526dcd8310a60c6ebc4bc77bcfa8d35d2f690f1dbded46"
+  },
+  {
+    "doc_id": "domrf_2022_annual",
+    "path": "domrf/2022/annual.pdf",
+    "pages": 63,
+    "sha256": "24ff75081894894bb98a2a30d868a7054e22eb03d0ba0f5d5270faac0076cba1"
+  },
+  {
+    "doc_id": "domrf_2023_6m",
+    "path": "domrf/2023/6m.pdf",
+    "pages": 47,
+    "sha256": "0b373415dd41fe3475cfdde3b5a0848f63f870c63be56c2f9e25671361aaff68"
+  },
+  {
+    "doc_id": "domrf_2023_annual",
+    "path": "domrf/2023/annual.pdf",
+    "pages": 102,
+    "sha256": "d0c7fa42b15bea6f6b4735b23fdf3ea8a1e5a18466d05060577620465c447f88"
+  },
+  {
+    "doc_id": "domrf_2024_6m",
+    "path": "domrf/2024/6m.pdf",
+    "pages": 54,
+    "sha256": "1d7bc5c5a1b8ba33d1fd2545bf88330413e0e3d157cb9e054b0fb9e8263ab2d4"
+  },
+  {
+    "doc_id": "domrf_2024_annual",
+    "path": "domrf/2024/annual.pdf",
+    "pages": 101,
+    "sha256": "24a17c4e79c4ff8b9f2aa9dd9ed73840f02d2d5a718dff2a1dad31ee89ede5c1"
+  },
+  {
+    "doc_id": "domrf_2025_6m",
+    "path": "domrf/2025/6m.pdf",
+    "pages": 52,
+    "sha256": "0c5782a177bc6c09876e0593b154b020d998e4744c1bedf7fe23b6c2881d271e"
+  },
+  {
+    "doc_id": "domrf_2025_annual",
+    "path": "domrf/2025/annual.pdf",
+    "pages": 106,
+    "sha256": "cd8d21b2b053f3b9f63af96d401668df3372ef7a161ff702562e99ee5fb076ad"
+  },
+  {
+    "doc_id": "gpb_2022_annual",
+    "path": "gpb/2022/annual.pdf",
+    "pages": 48,
+    "sha256": "564c1931b96499706fd3db628584aec99bfc1cd39d4751a79098cd5119f4a709"
+  },
+  {
+    "doc_id": "gpb_2023_annual",
+    "path": "gpb/2023/annual.pdf",
+    "pages": 48,
+    "sha256": "9a39be8b0fbd978d714f51e6f2248968f59139493a71dc8e7784604ff3ebc062"
+  },
+  {
+    "doc_id": "gpb_2024_annual",
+    "path": "gpb/2024/annual.pdf",
+    "pages": 51,
+    "sha256": "86a8d7bda8556e015e68ed711706a80d708011b46284e33eff7582e8360cb738"
+  },
+  {
+    "doc_id": "gpb_2025_annual",
+    "path": "gpb/2025/annual.pdf",
+    "pages": 93,
+    "sha256": "b31ac4e9e0c9ab6c14ae08d85008a74c61476671e8d9dceff399eb47e0129a58"
+  },
+  {
+    "doc_id": "mkb_2022_annual",
+    "path": "mkb/2022/annual.pdf",
+    "pages": 8,
+    "sha256": "d779d0f363785ba2d6f962a91e90edabd38a4ebd02308fe9653b71bbe20ec518"
+  },
+  {
+    "doc_id": "mkb_2023_6m",
+    "path": "mkb/2023/6m.pdf",
+    "pages": 11,
+    "sha256": "f5f581ac49719d8a17ab8af390699a2ec8e3e77a9318d4de13927d9189a2dd66"
+  },
+  {
+    "doc_id": "mkb_2023_annual",
+    "path": "mkb/2023/annual.pdf",
+    "pages": 12,
+    "sha256": "d5b8edc2789c3de9164fbfde92a7339524b6ddbfd37b5b8f2a4b0c3658cc3601"
+  },
+  {
+    "doc_id": "mkb_2024_6m",
+    "path": "mkb/2024/6m.pdf",
+    "pages": 12,
+    "sha256": "0c60521b94410f85f951a71a6a9510d1878e64da9401a7b118a3e074b32a49f9"
+  },
+  {
+    "doc_id": "mkb_2024_annual",
+    "path": "mkb/2024/annual.pdf",
+    "pages": 113,
+    "sha256": "b277bb72554a19724d8f394809fa8d34a4bc431ea7cb34a23dfbee3766e6c222"
+  },
+  {
+    "doc_id": "mkb_2025_6m",
+    "path": "mkb/2025/6m.pdf",
+    "pages": 62,
+    "sha256": "7705d0c2e7f8b2e877038071dfb6ad0a6d77e94cc3b978da7a17eb26104d6970"
+  },
+  {
+    "doc_id": "mkb_2025_annual",
+    "path": "mkb/2025/annual.pdf",
+    "pages": 117,
+    "sha256": "a7f159bd169142b1a4a8fa5adc951bf5d4dd9cb9db073f4d331870192ab7c8ff"
+  },
+  {
+    "doc_id": "rshb_2022_annual",
+    "path": "rshb/2022/annual.pdf",
+    "pages": 21,
+    "sha256": "cf6a7787b8ec4ad0de05757af86c8165f784efe3f5ce5bec9df53c54126d4775"
+  },
+  {
+    "doc_id": "rshb_2023_6m",
+    "path": "rshb/2023/6m.pdf",
+    "pages": 34,
+    "sha256": "e36d2be18ee69f0ef28a9fcb4b0befe11fe0c980daf7a3a92d97e9da49acbb6d"
+  },
+  {
+    "doc_id": "rshb_2023_annual",
+    "path": "rshb/2023/annual.pdf",
+    "pages": 19,
+    "sha256": "597249febf3ea51e65845c1de0868f0f834f7c5d11cc5c18fe8a355abe4086c2"
+  },
+  {
+    "doc_id": "rshb_2024_6m",
+    "path": "rshb/2024/6m.pdf",
+    "pages": 12,
+    "sha256": "113bec04d5dbce886ebdd96e4a767863f4b79e724be681ba7f4c264a32d4202d"
+  },
+  {
+    "doc_id": "rshb_2024_annual",
+    "path": "rshb/2024/annual.pdf",
+    "pages": 102,
+    "sha256": "1c9d7a235525b48d75574fb0d2e613875df5901064b111efe90a67248c2cd21b"
+  },
+  {
+    "doc_id": "rshb_2025_6m",
+    "path": "rshb/2025/6m.pdf",
+    "pages": 48,
+    "sha256": "f57731dfa8d344974b5aba6cbdfa2a179c5335cad2c015e2b9600a6602884a3c"
+  },
+  {
+    "doc_id": "rshb_2025_annual",
+    "path": "rshb/2025/annual.pdf",
+    "pages": 105,
+    "sha256": "3af42bc21d38ac067a585e824794ab24263690979ffa18bc734dc21d3333d9cf"
+  },
+  {
+    "doc_id": "sber_2022_annual",
+    "path": "sber/2022/annual.pdf",
+    "pages": 25,
+    "sha256": "0f736f6e44142c7f98eae63e9ad467f449865578f1f5df4c9db826c27b1c5aaa"
+  },
+  {
+    "doc_id": "sber_2023_6m",
+    "path": "sber/2023/6m.pdf",
+    "pages": 45,
+    "sha256": "dfea2257ba209c67f12e13a2202eb2d58e75a906660461ea3f953c30ea5ab684"
+  },
+  {
+    "doc_id": "sber_2023_annual",
+    "path": "sber/2023/annual.pdf",
+    "pages": 23,
+    "sha256": "724849f5047bb32bb1e13cb1d736b609a16d25974c9baf6ed805db4ed6a05b87"
+  },
+  {
+    "doc_id": "sber_2024_6m",
+    "path": "sber/2024/6m.pdf",
+    "pages": 24,
+    "sha256": "44e423398dfb4e3c98058627c5da7178f5f5628cf0346c66bb1dae56133d74bc"
+  },
+  {
+    "doc_id": "sber_2024_annual",
+    "path": "sber/2024/annual.pdf",
+    "pages": 167,
+    "sha256": "fbd4d739ce58c597b40fe1ea1c240fd6dcdaeb93ae455310c72f3600b6123ba1"
+  },
+  {
+    "doc_id": "sber_2025_6m",
+    "path": "sber/2025/6m.pdf",
+    "pages": 73,
+    "sha256": "090e4b47f88773b3a79043586b64e56670c175329c50bb7830c93cb3d949fad3"
+  },
+  {
+    "doc_id": "sber_2025_annual",
+    "path": "sber/2025/annual.pdf",
+    "pages": 170,
+    "sha256": "06ac4bd4164d576e8256c1458730b04e505a5a784868fb93a81041e92e00f91f"
+  },
+  {
+    "doc_id": "sovkom_2022_annual",
+    "path": "sovkom/2022/annual.pdf",
+    "pages": 73,
+    "sha256": "f25fa7b90c2c8d8d5f33ea204880adbaa462a34f53f12b5c64c5b3923f354cb5"
+  },
+  {
+    "doc_id": "sovkom_2023_6m",
+    "path": "sovkom/2023/6m.pdf",
+    "pages": 39,
+    "sha256": "a93a950093aca1af83e1030fbbba77198c16915ae24310e4410905560dedbe41"
+  },
+  {
+    "doc_id": "sovkom_2023_annual",
+    "path": "sovkom/2023/annual.pdf",
+    "pages": 80,
+    "sha256": "b03183eb2a9ea19f2f4883a1ba3a4c7626093958afc2c51137f7b3780b5843f2"
+  },
+  {
+    "doc_id": "sovkom_2024_6m",
+    "path": "sovkom/2024/6m.pdf",
+    "pages": 56,
+    "sha256": "a6158b05ec16d1bc55511221d39773949fafb5119a01bc6934a57034b033c565"
+  },
+  {
+    "doc_id": "sovkom_2024_annual",
+    "path": "sovkom/2024/annual.pdf",
+    "pages": 135,
+    "sha256": "c8339c9fd5562fba0f90693751730dfc5895cf681db9e392b3d28f3cd8feea56"
+  },
+  {
+    "doc_id": "sovkom_2025_6m",
+    "path": "sovkom/2025/6m.pdf",
+    "pages": 59,
+    "sha256": "f2a4918ae0ab4d330ffa5029d9395671967dffc127e707682a1f1a7f6c0ce394"
+  },
+  {
+    "doc_id": "sovkom_2025_annual",
+    "path": "sovkom/2025/annual.pdf",
+    "pages": 112,
+    "sha256": "7b07a3201da4929ef68499e4e6293ab2edd6482a1621043844d4debc4d71e259"
+  },
+  {
+    "doc_id": "tbank_2022_annual",
+    "path": "tbank/2022/annual.pdf",
+    "pages": 135,
+    "sha256": "ade21f9edbe6ea03b68b57651b4db80fcbeb2277805def938864dbab07c1a020"
+  },
+  {
+    "doc_id": "tbank_2023_annual",
+    "path": "tbank/2023/annual.pdf",
+    "pages": 135,
+    "sha256": "89b5be12884a9c8c443ea1c5179c3ce123edd1dbc881698714295d508eb48184"
+  },
+  {
+    "doc_id": "tbank_2024_annual",
+    "path": "tbank/2024/annual.pdf",
+    "pages": 126,
+    "sha256": "af34272cf2ec683ade1d4e912e0f847486b72413bf3eef0e44b7f2fb327147b0"
+  },
+  {
+    "doc_id": "tbank_2025_6m",
+    "path": "tbank/2025/6m.pdf",
+    "pages": 86,
+    "sha256": "fb7cfb068441117c0abef6bbe1a55a59e914d60f57a502fc11bdb52866145ee8"
+  },
+  {
+    "doc_id": "tbank_2025_annual",
+    "path": "tbank/2025/annual.pdf",
+    "pages": 127,
+    "sha256": "0ac7655fe6ad01f1bc35f09c42f5ee9902f5a9bc7fe18f5719e8749acc3e5b1f"
+  },
+  {
+    "doc_id": "vtb_2022_annual",
+    "path": "vtb/2022/annual.pdf",
+    "pages": 8,
+    "sha256": "16519a8e74677045f0e176f9e17062f25b4e158d24ee87f2baeb975dede20026"
+  },
+  {
+    "doc_id": "vtb_2023_6m",
+    "path": "vtb/2023/6m.pdf",
+    "pages": 8,
+    "sha256": "d1f4d48537ecdc05983e5b31e78bb3865aaec27a7c69bf6b60ce740071b1f396"
+  },
+  {
+    "doc_id": "vtb_2023_annual",
+    "path": "vtb/2023/annual.pdf",
+    "pages": 12,
+    "sha256": "64b623db1244aa880a9d8562f5bc061d3339776fa603f5e978d7827b3d02a819"
+  },
+  {
+    "doc_id": "vtb_2024_6m",
+    "path": "vtb/2024/6m.pdf",
+    "pages": 12,
+    "sha256": "e215991a01dff53793e9f641bf73b019320a4deb0bda44ff29d0a7d48682107b"
+  },
+  {
+    "doc_id": "vtb_2024_annual",
+    "path": "vtb/2024/annual.pdf",
+    "pages": 99,
+    "sha256": "580fdf27dc8890dcf49ab8899ae6301b5d726b60227187efdcb7b7df641e44f0"
+  },
+  {
+    "doc_id": "vtb_2025_6m",
+    "path": "vtb/2025/6m.pdf",
+    "pages": 47,
+    "sha256": "284e1cc217a4172ad00c5db51af40c4d10390f0a6d900bf125e0a9384e9a891f"
+  },
+  {
+    "doc_id": "vtb_2025_annual",
+    "path": "vtb/2025/annual.pdf",
+    "pages": 97,
+    "sha256": "9c64c57daa58142db1fc1d72f9c27310bbc3b6e42899473bb31bc622a221147a"
+  }
+]

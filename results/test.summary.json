@@ -1,0 +1,9 @@
+{
+  "context_recall": 0.8594562647754137,
+  "context_precision": 0.7440898345153665,
+  "answer_correctness": 0.9219858156028369,
+  "time": 16.876784465385928,
+  "questions": 141,
+  "split": "test",
+  "fingerprint": "aafcd790673e89ce27dbe7483b8962f2cc88516701a4eaccaf8c242323f98433"
+}

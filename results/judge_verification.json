@@ -1,0 +1,13 @@
+{
+  "upstream_commit": "dfeaba0f9804371202a88efa62950075130c0c21",
+  "source_url": "https://github.com/polIINNa/hse_rag_homework/blob/dfeaba0f9804371202a88efa62950075130c0c21/eval/eval_functions.py",
+  "upstream_file_sha256": "75f5056239bae0e446a70f811923d2b19604fc800cac7e3d91c585b07818387f",
+  "local_file_sha256": "75f5056239bae0e446a70f811923d2b19604fc800cac7e3d91c585b07818387f",
+  "judge_prompt_sha256": "0778167f704e5cd881162730c65343e34e2d0b5b3d3484f0d42d5f61d1c18695",
+  "model": "deepseek-flash",
+  "judge_prompt_identical": true,
+  "request_body_identical": true,
+  "context_scoring_identical": true,
+  "response_parsing_identical": true,
+  "file_identical": true
+}

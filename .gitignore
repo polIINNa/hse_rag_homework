@@ -8,3 +8,8 @@ __pycache__/
 outputs/
 index/
 /data/reports/
+.cache/
+.pytest_cache/
+tmp/
+node_modules/
+*.log

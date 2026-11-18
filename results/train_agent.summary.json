@@ -1,0 +1,9 @@
+{
+  "context_recall": 1.0,
+  "context_precision": 0.6666666666666666,
+  "answer_correctness": 1,
+  "time": 15.046873781124305,
+  "questions": 8,
+  "split": "train",
+  "fingerprint": "50eac6b8e04090b071812756dee269d28692746feaf5ca920852c5e9b9807af3"
+}
