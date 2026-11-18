@@ -1,0 +1,13 @@
+{
+  "questions": 141,
+  "averages": {
+    "context_recall": 0.7583924349881797,
+    "context_precision": 0.6412529550827423,
+    "answer_correctness": 0.8652482269503546,
+    "time": 13.404316039007107
+  },
+  "additional_search_questions": 13,
+  "teacher_judge_sha256": "347bc2f621a95ca2cef0cf2623cb41e71ea14edd48a04675084a7d8e3332d129",
+  "xlsx_sha256": "81bab6d60bc4937bdfa4e52f85fe902822c7336aff03a9877847da19b9bc0d34",
+  "checks": "passed"
+}

@@ -10,6 +10,7 @@ from openpyxl import Workbook, load_workbook
 
 from eval.eval_functions import score_answer, score_context
 from eval.rag_example import RAG
+from rag.llm import retry_call
 
 
 def read_items(dataset_path):
@@ -46,7 +47,7 @@ def evaluate(dataset_path, output_path=None):
         prediction = system.rag(item["question"])
         elapsed = perf_counter() - start
         context_scores = score_context(item["gold_context"], prediction["context"])
-        answer_score = score_answer(item["gold_answer"], prediction["answer"])
+        answer_score = retry_call(lambda: score_answer(item["gold_answer"], prediction["answer"]))
         results.append({
             "question_id": item["question_id"],
             "question": item["question"],
