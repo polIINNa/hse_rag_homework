@@ -98,18 +98,21 @@ answer_correctness = score_answer(gold_answer, answer)["answer_correctness"]
 
 | Метрика | Среднее |
 | --- | ---: |
-| `context_recall` | 0.508983451536643 |
-| `context_precision` | 0.0966312056737589 |
-| `answer_correctness` | 0.48936170212766 |
-| `time`, сек | 2.86760405034689 |
+| `context_recall` | 0.575177304964539 |
+| `context_precision` | 0.108156028368794 |
+| `answer_correctness` | 0.581560283687943 |
+| `time`, сек | 2.92030724680963 |
 
-> Значения взяты с листа «Итоги» файла [`test_results.xlsx`](test_results.xlsx) (итоговый прогон eval на test, 141 вопрос).
+> Значения взяты с листа «Итоги» файла [`test_results.xlsx`](test_results.xlsx) (141 вопрос).
 
 ## Кратко о решении
 
-RAG постранично извлекает текст из PDF, строит чанковый эмбеддинговый индекс с метаданными `doc_id` и страницы, находит релевантные страницы с учётом банка/года/периода из вопроса и генерирует ответ по полному тексту найденных страниц (локальные эмбеддинги + LLM API; без ключа — извлекающий fallback). Подробное описание реализации — в [`IMPLEMENTATION.md`](IMPLEMENTATION.md).
+- **RAG:** постраничный парсинг PDF (`pymupdf`, с извлечением текста таблиц) с сохранением `doc_id`/страницы, чанковый эмбеддинговый индекс (`sentence-transformers`, локально), гибридное ранжирование (семантика + метаданные банк/год/период + лексическое совпадение) и генерация ответа по полному тексту найденных страниц через LLM API (без ключа — извлекающий fallback).
+- **Agentic RAG (+1):** агент сам решает, нужен ли дополнительный поиск — после первичного retrieval анализирует покрытие сущностей/лет/периодов в вопросе и при необходимости выполняет целевые доп. поиски, объединяя результаты.
+- **LangSmith (+1):** при включённой трассировке логируются трейсы RAG и метрики (`context_recall`, `context_precision`, `answer_correctness`, `time`) в эксперимент LangSmith.
+- Подробное описание реализации — в [`IMPLEMENTATION.md`](IMPLEMENTATION.md).
 
-**Библиотеки:** `pymupdf`, `sentence-transformers`, `torch`, `numpy`, `requests`, `openpyxl` (см. [`requirements.txt`](requirements.txt)).
+**Библиотеки:** `pymupdf`, `sentence-transformers`, `torch`, `numpy`, `requests`, `openpyxl`, `langsmith` (см. [`requirements.txt`](requirements.txt)).
 
 ## Установка и подготовка
 
@@ -129,6 +132,8 @@ python -m eval.build_index --batch-size 32
 Скрипт сразу сохраняет `eval/cache/chunks_v2.jsonl`, затем батчами считает эмбеддинги с прогрессом и промежуточным сохранением (`embeddings_v2.partial.npy`). При повторном запуске продолжит с последнего батча. После завершения появится `eval/cache/embeddings_v2.npy` — дальше `RAG()` стартует быстро.
 
 > Без предварительной сборки `RAG()` соберёт индекс автоматически, но без прогресс-бара — по консоли это может выглядеть как «зависание».
+>
+> Если у вас уже есть старый `chunks_v2`/`embeddings_v2` и вы хотите применить улучшенное извлечение (в т.ч. таблиц), удалите файлы `eval/cache/chunks_v2.jsonl`, `eval/cache/embeddings_v2.npy` (и `*.partial.npy`/`*.progress.json`, если есть) и запустите сборку заново. Агентный retrieval и улучшенное ранжирование работают и на существующем индексе.
 
 ## Как использовать API-ключи
 
@@ -175,6 +180,11 @@ $env:PYTHONPATH = (Get-Location).Path
 $env:LLM_API_KEY = "<ключ_судьи>"      # обязателен для answer_correctness
 $env:GEN_API_KEY = "<ключ_модели>"     # для генерации ответов (если отдельный ключ)
 
+# (опционально, для +1 LangSmith) трейсы RAG и метрики в эксперименте:
+# $env:LANGSMITH_TRACING = "true"
+# $env:LANGSMITH_API_KEY  = "<ваш_langsmith_ключ>"
+# $env:LANGSMITH_PROJECT  = "hse-rag-homework"
+
 python -m eval.run_eval_resumable data/test.jsonl --output test_results.xlsx --judge-rpm 10
 ```
 
@@ -184,7 +194,9 @@ python -m eval.run_eval_resumable data/test.jsonl --output test_results.xlsx --j
 python -m eval.evaluator_excel data/test.jsonl --output test_results.xlsx
 ```
 
-> ⚠️ Если вы изменили RAG/поиск, для нового прогона укажите **новое имя** выходного файла (например, `test_results_v2.xlsx`) или удалите/переименуйте старый `*.progress.jsonl`. Иначе скрипт пропустит все вопросы как уже обработанные, и Excel останется старым.
+> Если вы изменили RAG/поиск, для нового прогона укажите **новое имя** выходного файла (например, `test_results_v2.xlsx`) или удалите/переименуйте старый `*.progress.jsonl`. Иначе скрипт пропустит все вопросы как уже обработанные, и Excel останется старым.
+>
+> После любого изменения кода RAG пересчитайте eval на всём test и обновите `test_results.xlsx` и 4 средних в README — при проверке преподаватель сверяет значения (допуск 5%).
 
 ## Требования к оформлению (исходные)
 

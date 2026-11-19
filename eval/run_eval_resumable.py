@@ -1,4 +1,4 @@
-"""Запуск eval с сохранением прогресса, троттлингом и повторными попытками.
+"""Запуск eval с сохранением прогресса, троттлингом, ретраями и LangSmith-трассировкой.
 
 Использование (из корня репозитория):
   python -m eval.run_eval_resumable data/test.jsonl --output test_results.xlsx \
@@ -8,11 +8,20 @@
 (например, 429 от LLM-судьи) весь прогон теряется. Этот скрипт:
 - ограничивает частоту вызовов судьи (по умолчанию 10 запросов/мин),
 - повторяет запрос при 429/временных сетевых ошибках,
-- сохраняет прогресс в JSONL и умеет продолжать с места остановки.
+- сохраняет прогресс в JSONL и умеет продолжать с места остановки,
+- при включённом LangSmith отправляет трейсы RAG и метрики (feedback) в проект.
+
+LangSmith (доп. балл): установите переменные окружения и запустите eval как обычно:
+  $env:LANGSMITH_TRACING="true"
+  $env:LANGSMITH_API_KEY="<ключ>"
+  $env:LANGSMITH_PROJECT="hse-rag-homework"   # опционально
+Трейсы вызовов RAG и метрики context_recall/context_precision/answer_correctness/time
+будут доступны в LangSmith.
 """
 
 import argparse
 import json
+import os
 import time
 from pathlib import Path
 from statistics import mean
@@ -22,6 +31,48 @@ from openpyxl import Workbook, load_workbook
 
 from eval.eval_functions import score_answer, score_context
 from eval.rag_example import RAG
+
+# Опциональная интеграция с LangSmith: если не настроено/недоступно — просто no-op.
+try:
+    from langsmith import traceable  # type: ignore
+    from langsmith.run_helpers import get_current_run_tree  # type: ignore
+except Exception:  # pragma: no cover
+    def traceable(*dargs, **dkwargs):
+        def deco(fn):
+            return fn
+
+        if dargs and callable(dargs[0]) and len(dargs) == 1 and not dkwargs:
+            return dargs[0]
+        return deco
+
+    def get_current_run_tree():
+        return None
+
+
+def _log_feedback(row):
+    """Отправляет метрики в LangSmith как feedback текущего трейса (если включено)."""
+    try:
+        rt = get_current_run_tree()
+        if not rt:
+            return
+        client = getattr(rt, "client", None)
+        if client is None:
+            from langsmith import Client  # type: ignore
+
+            client = Client()
+        run_id = getattr(rt, "id", None)
+        if not run_id:
+            return
+        for key in ("context_recall", "context_precision", "answer_correctness", "time"):
+            val = row.get(key)
+            if val is None:
+                continue
+            try:
+                client.create_feedback(run_id=run_id, key=key, score=float(val))
+            except Exception:
+                pass
+    except Exception:
+        pass
 
 
 def read_items(dataset_path):
@@ -106,6 +157,33 @@ def write_excel(results, output_path):
     report.save(output_path)
 
 
+@traceable(run_type="chain", name="evaluate_question")
+def _evaluate_one(system, item, min_interval):
+    """Оценивает один вопрос: RAG + метрики контекста + судья.
+    Обёрнуто в traceable, чтобы в LangSmith был трейс и можно было прикрепить метрики."""
+    start = perf_counter()
+    prediction = system.rag(item["question"])
+    elapsed = perf_counter() - start
+    context_scores = score_context(item["gold_context"], prediction["context"])
+    answer_score = call_judge_with_retry(
+        item["gold_answer"], prediction["answer"], min_interval=min_interval
+    )
+
+    row = {
+        "question_id": item["question_id"],
+        "question": item["question"],
+        "gold_context": json.dumps(item["gold_context"], ensure_ascii=False),
+        "gold_answer": item["gold_answer"],
+        "context": json.dumps(prediction["context"], ensure_ascii=False),
+        "answer": prediction["answer"],
+        **context_scores,
+        "answer_correctness": answer_score["answer_correctness"],
+        "time": elapsed,
+    }
+    _log_feedback(row)
+    return row
+
+
 def evaluate(dataset_path, output_path=None, progress_path=None, judge_rpm=10):
     dataset_path = Path(dataset_path)
     if output_path is None:
@@ -130,25 +208,7 @@ def evaluate(dataset_path, output_path=None, progress_path=None, judge_rpm=10):
                     print(f"[{i}/{len(items)}] skip {qid} (cached)")
                     continue
 
-                start = perf_counter()
-                prediction = system.rag(item["question"])
-                elapsed = perf_counter() - start
-                context_scores = score_context(item["gold_context"], prediction["context"])
-                answer_score = call_judge_with_retry(
-                    item["gold_answer"], prediction["answer"], min_interval=min_interval
-                )
-
-                row = {
-                    "question_id": qid,
-                    "question": item["question"],
-                    "gold_context": json.dumps(item["gold_context"], ensure_ascii=False),
-                    "gold_answer": item["gold_answer"],
-                    "context": json.dumps(prediction["context"], ensure_ascii=False),
-                    "answer": prediction["answer"],
-                    **context_scores,
-                    "answer_correctness": answer_score["answer_correctness"],
-                    "time": elapsed,
-                }
+                row = _evaluate_one(system, item, min_interval)
                 prog.write(json.dumps(row, ensure_ascii=False) + "\n")
                 prog.flush()
                 done[qid] = row
