@@ -11,6 +11,8 @@
 
 ## Воспроизведение
 
+Положите `EMB_KEY` и `LLM_API_KEY` в `.env` и распакуйте [архив отчётов](https://media.githubusercontent.com/media/polIINNa/hse_rag_homework/main/data/reports.zip) в `data/reports`.
+
 ```bash
 python3.12 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
@@ -22,7 +24,7 @@ python3.12 -m venv .venv
 
 | Метрика | Среднее |
 | --- | ---: |
-| `context_recall` | TBD |
-| `context_precision` | TBD |
-| `answer_correctness` | TBD |
-| `time`, с | TBD |
+| `context_recall` | 0.49775414 |
+| `context_precision` | 0.20070922 |
+| `answer_correctness` | 0.65957447 |
+| `time`, с | 12.00142672 |
