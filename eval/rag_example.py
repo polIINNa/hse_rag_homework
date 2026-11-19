@@ -12,6 +12,7 @@ import requests
 from dotenv import load_dotenv
 
 from build_index import DEFAULT_INDEX, ROOT, Embedder, load_index
+from eval.llm_http import post_with_retry
 
 
 SYSTEM = """Ты отвечаешь на вопросы по финансовой отчётности.
@@ -91,7 +92,8 @@ class RAG:
             for (doc_id, page), text in pages.items()
         ]
         payload = {"question": question, "allow_search": allow_search, "context": context}
-        response = self.session.post(
+        response = post_with_retry(
+            self.session.post,
             "https://claude.gigaparsers.ru/v1/messages",
             headers={"x-api-key": self.api_key, "anthropic-version": "2023-06-01"},
             json={
@@ -104,7 +106,6 @@ class RAG:
             },
             timeout=90,
         )
-        response.raise_for_status()
         raw = "".join(
             block["text"] for block in response.json()["content"] if block["type"] == "text"
         ).strip()

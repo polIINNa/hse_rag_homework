@@ -3,6 +3,8 @@
 import json
 import os
 
+from eval.llm_http import post_with_retry
+
 
 def _document_pages(context):
     pages = set()
@@ -46,7 +48,8 @@ def score_answer(gold_answer, answer):
     """Получить answer_correctness и объяснение LLM-судьи для пары ответов."""
     import requests
 
-    response = requests.post(
+    response = post_with_retry(
+        requests.post,
         "https://claude.gigaparsers.ru/v1/messages",
         headers={
             "x-api-key": os.environ["LLM_API_KEY"],
@@ -64,7 +67,6 @@ def score_answer(gold_answer, answer):
         },
         timeout=90,
     )
-    response.raise_for_status()
     text = "".join(
         block["text"] for block in response.json()["content"] if block["type"] == "text"
     ).strip()
