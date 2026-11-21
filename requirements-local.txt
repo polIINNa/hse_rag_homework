@@ -1,0 +1,5 @@
+# Локальный bge-m3 вместо курсового эмбеддера (EMBEDDER=local) и пересборка индекса без EMB_KEY.
+-r requirements.txt
+sentence-transformers==6.3.0
+torch==2.15.0
+transformers==5.22.2

@@ -1,0 +1,7 @@
+langsmith==0.14.17
+numpy==2.5.4
+openpyxl==3.1.5
+PyStemmer==3.1.0
+python-dotenv==1.2.4
+rank-bm25==0.2.2
+requests==2.34.2
