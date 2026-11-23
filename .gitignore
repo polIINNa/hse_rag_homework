@@ -8,3 +8,7 @@ __pycache__/
 outputs/
 index/
 /data/reports/
+work/
+.pytest_cache/
+.ruff_cache/
+.desloppify/
